@@ -12,7 +12,7 @@ export interface AccountEvent {
 export interface Transaction {
   amountCurrency: AmountCurrency;
   type: string;
-  creditDebitIndicator: 'CRDT';
+  creditDebitIndicator: string;
 }
 
 export interface AmountCurrency {

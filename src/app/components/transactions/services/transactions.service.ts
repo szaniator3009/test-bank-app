@@ -10,7 +10,7 @@ export class TransactionsService {
   _accountBalance$: Observable<number> = this.accountBalance$.asObservable();
 
   private transactions$: BehaviorSubject<number> = new BehaviorSubject<number>(
-    5824.76
+    58324.76
   );
   _transactions$: Observable<number> = this.transactions$.asObservable();
 

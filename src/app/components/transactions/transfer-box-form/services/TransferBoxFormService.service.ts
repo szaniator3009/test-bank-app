@@ -7,15 +7,10 @@ export class TransferBoxFormService {
 
   getForm(): FormGroup {
     const formGroup: FormGroup = this.fb.group({
-      toAccount: [null],
+      toAccount: [null, Validators.required],
       amount: [
         null,
-        [
-          Validators.required,
-          Validators.min(0),
-          Validators.max(500),
-          Validators.pattern(/^\d+\.\d{2}$/),
-        ],
+        [Validators.required, Validators.min(0), Validators.max(500)],
       ],
     });
 

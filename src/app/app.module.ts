@@ -11,6 +11,7 @@ import { TransferBoxFormComponent } from './components/transactions/transfer-box
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TransactionsListComponent } from './components/transactions/transactions-list/transactions-list.component';
+import { ListItemComponent } from './components/transactions/transactions-list/list-item/list-item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TransactionsListComponent } from './components/transactions/transaction
     BoxHeaderComponent,
     TransferBoxFormComponent,
     TransactionsListComponent,
+    ListItemComponent,
   ],
   imports: [BrowserModule, BbUIModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
