@@ -44,4 +44,10 @@ export class TransactionsService {
   setAccountEvents(value: AccountEvents): void {
     this.accountsEvents$.next(value);
   }
+
+  getTransactionByMerchantName(transactions: AccountEvent[], name: string) {
+    return transactions.filter((transaction) =>
+      transaction?.merchant?.name.toLowerCase().startsWith(name.toLowerCase())
+    );
+  }
 }

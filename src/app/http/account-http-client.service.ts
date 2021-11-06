@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import accountEvents from '../../bb-ui/mock-data/transactions.json';
 import { AccountEvent, AccountEvents } from '../models/account';
+
 @Injectable({ providedIn: 'root' })
 export class AccountHttpClient {
   accountEvents: AccountEvents = accountEvents as AccountEvents;

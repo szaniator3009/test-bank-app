@@ -38,7 +38,7 @@ export class TransferBoxFormService {
       toAccount: [null, Validators.required],
       amount: [
         null,
-        [Validators.required, Validators.min(0), Validators.max(500)],
+        [Validators.required, Validators.min(1), Validators.max(500)],
       ],
     });
     return formGroup;

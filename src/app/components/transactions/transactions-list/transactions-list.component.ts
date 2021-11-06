@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { URL_IMAGES } from 'src/app/const/urls';
 import { AccountEvents } from 'src/app/models/account';
 import { TransactionsService } from '../services/transactions.service';
@@ -16,5 +16,19 @@ export class TransactionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountEvents$ = this.transactionsService._accountsEvents$;
+  }
+  handleInputChange(e: any): void {
+    e !== ''
+      ? (this.accountEvents$ = this.transactionsService._accountsEvents$.pipe(
+          switchMap((events) => {
+            return of({
+              data: this.transactionsService.getTransactionByMerchantName(
+                events.data,
+                e
+              ),
+            });
+          })
+        ))
+      : (this.accountEvents$ = this.transactionsService._accountsEvents$);
   }
 }

@@ -7,7 +7,7 @@
     <div class="w-6 h-full bg-gray-300 align-self-center">
       <img [src]="urlImages + 'search.svg'" alt="search" />
     </div>
-    <app-filter></app-filter>
+    <app-filter (inputChange)="handleInputChange($event)"></app-filter>
   </div>
   <ng-container *ngIf="accountEvents$ | async as accountsEvents">
     <div class="fixedHeightContainer">
