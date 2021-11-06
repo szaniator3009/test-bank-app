@@ -3,28 +3,28 @@ export interface AccountEvents {
 }
 
 export interface AccountEvent {
-  categoryCode: string;
-  dates: Dates;
-  transaction: Transaction;
-  merchant: Merchant;
+  categoryCode?: string;
+  dates?: Dates;
+  transaction?: Transaction;
+  merchant?: Merchant;
 }
 
 export interface Transaction {
-  amountCurrency: AmountCurrency;
-  type: string;
-  creditDebitIndicator: string;
+  amountCurrency?: AmountCurrency;
+  type?: string;
+  creditDebitIndicator?: string;
 }
 
 export interface AmountCurrency {
-  amount: number;
-  currencyCode: string;
+  amount?: string;
+  currencyCode?: string;
 }
 
 export interface Dates {
-  valueDate: number;
+  valueDate?: number;
 }
 
 export interface Merchant {
-  name: string;
-  accountNumber: string;
+  name?: string;
+  accountNumber?: string;
 }

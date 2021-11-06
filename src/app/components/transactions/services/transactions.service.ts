@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, switchMap } from 'rxjs';
 import { AccountHttpClient } from 'src/app/http/account-http-client.service';
-import { AccountEvents } from 'src/app/models/account';
+import { AccountEvent, AccountEvents } from 'src/app/models/account';
 
 @Injectable({ providedIn: 'root' })
 export class TransactionsService {
@@ -20,16 +20,21 @@ export class TransactionsService {
   _accountsEvents$: Observable<AccountEvents> =
     this.accountsEvents$.asObservable();
 
-  constructor(accountHttpClient: AccountHttpClient) {
-    accountHttpClient
-      .getAccountEvents$()
-      .pipe(
-        switchMap((data) => {
-          this.setAccountEvents(data);
-          return of(data);
-        })
-      )
-      .subscribe();
+  constructor(private accountHttpClient: AccountHttpClient) {
+    this.getAccountsEvents$().subscribe();
+  }
+
+  getAccountsEvents$(): Observable<AccountEvents> {
+    return this.accountHttpClient.getAccountEvents$().pipe(
+      switchMap((data) => {
+        this.setAccountEvents(data);
+        return of(data);
+      })
+    );
+  }
+
+  postAccountEvent$(value: AccountEvent): void {
+    this.accountHttpClient.postAccountEvent$(value);
   }
 
   setAccountBalance(value: number): void {

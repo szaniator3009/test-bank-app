@@ -13,6 +13,5 @@ export class TransactionsBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountsEvents$ = this.transactionsService._accountsEvents$;
-    this.accountsEvents$.subscribe(console.log);
   }
 }

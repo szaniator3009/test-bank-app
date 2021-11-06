@@ -12,7 +12,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TransactionsListComponent } from './components/transactions/transactions-list/transactions-list.component';
 import { ListItemComponent } from './components/transactions/transactions-list/list-item/list-item.component';
-
+import {
+  ConfirmBoxConfigModule,
+  DialogConfigModule,
+  NgxAwesomePopupModule,
+  ToastNotificationConfigModule,
+} from '@costlydeveloper/ngx-awesome-popup';
+import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +29,25 @@ import { ListItemComponent } from './components/transactions/transactions-list/l
     TransferBoxFormComponent,
     TransactionsListComponent,
     ListItemComponent,
+    ModalComponent,
   ],
-  imports: [BrowserModule, BbUIModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    BbUIModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxAwesomePopupModule.forRoot({
+      ColorList: {
+        Success: '#3caea3', // optional
+        Info: '#2f8ee5', // optional
+        Warning: '#ffc107', // optional
+        Danger: '#e46464', // optional
+      },
+    }),
+    ConfirmBoxConfigModule.forRoot(),
+    DialogConfigModule.forRoot(),
+    ToastNotificationConfigModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
