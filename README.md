@@ -1,8 +1,10 @@
 # TestBankApp
-To run app tou first need to run
+To run app you first need to run
 ## npm install
 then just run
 ## npm start
+and go to:
+http://localhost:4200/
 
 To run all the test:
 ## npm test
