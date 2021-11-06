@@ -33,7 +33,7 @@ describe('Transactions service', () => {
     it('should set accountBalance', (done) => {
       const mockBalance: number = 5000;
       service.setAccountBalance(mockBalance);
-      service._accountBalance$.subscribe((val) => {
+      service.getAccountBalance$().subscribe((val) => {
         expect(mockBalance).toEqual(val);
         done();
       });

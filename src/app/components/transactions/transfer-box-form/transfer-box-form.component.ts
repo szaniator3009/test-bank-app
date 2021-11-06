@@ -22,8 +22,9 @@ export class TransferBoxFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.transferBoxFormService.getForm();
-    this.accountBalance$ = this.transactionsService._accountBalance$;
-    this.transferBoxFormService._isConfirmed$
+    this.accountBalance$ = this.transactionsService.getAccountBalance$();
+    this.transferBoxFormService
+      .getIsConfirmed$()
       .pipe(
         switchMap((value) => {
           value === true && this.form.reset();

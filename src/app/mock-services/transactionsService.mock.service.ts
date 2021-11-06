@@ -9,6 +9,10 @@ export const TRANSACTIONS_SERVICE_MOCK: Partial<TransactionsService> = {
     return of(null);
   },
 
+  getAccountBalance$(): Observable<number> {
+    return of(null);
+  },
+
   postAccountEvent$(value: AccountEvent): void {},
 
   getTransactionByMerchantName(transactions: AccountEvent[], name: string) {

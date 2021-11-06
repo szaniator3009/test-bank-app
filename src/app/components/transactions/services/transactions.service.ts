@@ -7,7 +7,6 @@ import { AccountEvent, AccountEvents } from 'src/app/models/account';
 export class TransactionsService {
   private accountBalance$: BehaviorSubject<number> =
     new BehaviorSubject<number>(5824.76);
-  _accountBalance$: Observable<number> = this.accountBalance$.asObservable();
 
   constructor(private accountHttpClient: AccountHttpClient) {}
 
@@ -22,6 +21,9 @@ export class TransactionsService {
         return err;
       })
     );
+  }
+  getAccountBalance$(): Observable<number> {
+    return this.accountBalance$.asObservable();
   }
 
   postAccountEvent$(value: AccountEvent): void {
