@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TRANSACTIONS_SERVICE_MOCK } from 'src/app/mock-services/transactionsService.mock.service';
+import { TRANSACTIONS_SERVICE_MOCK } from 'src/app/mock-services/transactionsService.mock';
 import { BoxHeaderComponent } from 'src/app/shared/components/box-header/box-header.component';
 import { TransactionsService } from '../services/transactions.service';
 import { ListItemComponent } from './list-item/list-item.component';

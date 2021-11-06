@@ -5,7 +5,7 @@ import {
   tick,
 } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { TRANSACTIONS_SERVICE_MOCK } from 'src/app/mock-services/transactionsService.mock.service';
+import { TRANSACTIONS_SERVICE_MOCK } from 'src/app/mock-services/transactionsService.mock';
 import { AccountEvents } from 'src/app/models/account';
 import { FilterComponent } from 'src/bb-ui/components/filter/filter.component';
 import { TransactionsService } from './services/transactions.service';

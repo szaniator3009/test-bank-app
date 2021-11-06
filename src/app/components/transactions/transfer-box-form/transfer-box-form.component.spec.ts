@@ -5,9 +5,9 @@ import { SubmitButtonComponent } from 'src/bb-ui/components/submit-button/submit
 import { TransactionsService } from '../services/transactions.service';
 import { TransferBoxFormService } from './services/transferBoxFormService.service';
 import { TransferBoxFormComponent } from './transfer-box-form.component';
-import { TRANSACTIONS_SERVICE_MOCK } from '../../../mock-services/transactionsService.mock.service';
-import { TRANSFER_BOX_FORM_SERVICE } from '../../../mock-services/transferBoxFormService.mock.service';
 import { of } from 'rxjs';
+import { TRANSACTIONS_SERVICE_MOCK } from 'src/app/mock-services/transactionsService.mock';
+import { TRANSFER_BOX_FORM_SERVICE } from 'src/app/mock-services/transferBoxFormService.mock';
 describe('TransferBoxFormComponent', () => {
   let component: TransferBoxFormComponent;
   let fixture: ComponentFixture<TransferBoxFormComponent>;
@@ -83,6 +83,7 @@ describe('TransferBoxFormComponent', () => {
       component.ngOnInit();
       expect(spyOnGetIsConfirmed).toHaveBeenCalled();
       expect(component.form.get('test amount')).toEqual(null);
+      expect(component.form.reset).toBeTruthy();
     });
 
     it('should not reset for when isConfirmed is false', () => {
