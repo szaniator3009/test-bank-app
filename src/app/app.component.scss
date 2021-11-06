@@ -10,6 +10,14 @@
   grid-area: nav;
 }
 .content {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  top: 5%;
+  left: 1%;
+}
+.background {
   grid-area: main;
   width: 100%;
   height: 100%;
@@ -17,6 +25,7 @@
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  filter: blur(3px);
 }
 .footer {
   grid-area: footer;

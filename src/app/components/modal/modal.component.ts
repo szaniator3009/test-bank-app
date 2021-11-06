@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DialogBelonging } from '@costlydeveloper/ngx-awesome-popup';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, switchMap, tap } from 'rxjs';
 import { TransactionsService } from '../transactions/services/transactions.service';
 import { SubSink } from 'subsink';
 import {
@@ -39,10 +39,11 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   private addAccountEvent$(): Observable<any> {
     return this.transferBoxFormService._accountEvent$.pipe(
-      tap((event) => {
+      switchMap((event) => {
         this.transactionsService.postAccountEvent$(
           this.transferBoxFormService.createAccountEvent(event)
         );
+        return of(event);
       })
     );
   }

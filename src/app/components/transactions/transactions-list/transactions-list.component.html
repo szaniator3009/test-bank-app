@@ -3,10 +3,7 @@
     [title]="'Transactions list'"
     [image]="'list.svg'"
   ></app-box-header>
-  <div class="flex border-2 m-3 rounded-sm overscroll-y-auto">
-    <div class="w-6 h-full bg-gray-300 align-self-center">
-      <img [src]="urlImages + 'search.svg'" alt="search" />
-    </div>
+  <div class="flex border m-3 overscroll-y-auto">
     <app-filter (inputChange)="handleInputChange($event)"></app-filter>
   </div>
   <ng-container *ngIf="accountEvents$ | async as accountsEvents">
