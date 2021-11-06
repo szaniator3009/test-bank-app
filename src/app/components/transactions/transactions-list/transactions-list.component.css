@@ -1,0 +1,9 @@
+.fixedHeightContainer {
+  overflow-y: scroll;
+  height: 70vh;
+}
+
+.content {
+  overflow: auto;
+  background: #fff;
+}

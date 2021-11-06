@@ -7,6 +7,7 @@ import { TransactionsService } from '../services/transactions.service';
 @Component({
   selector: 'app-transactions-list',
   templateUrl: './transactions-list.component.html',
+  styleUrls: ['./transactions-list.component.css'],
 })
 export class TransactionsListComponent implements OnInit {
   accountEvents$: Observable<AccountEvents>;

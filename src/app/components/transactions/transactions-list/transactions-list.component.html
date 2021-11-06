@@ -1,4 +1,4 @@
-<div class="w-auto h-full bg-white rounded-lg">
+<div class="w-auto bg-white rounded-lg">
   <app-box-header
     [title]="'Transactions list'"
     [image]="'list.svg'"
@@ -10,8 +10,10 @@
     <app-filter></app-filter>
   </div>
   <ng-container *ngIf="accountEvents$ | async as accountsEvents">
-    <div class="m-3" *ngFor="let item of accountsEvents.data">
-      <app-list-item [item]="item"></app-list-item>
+    <div class="fixedHeightContainer">
+      <div class="m-3 content" *ngFor="let item of accountsEvents.data">
+        <app-list-item [item]="item"></app-list-item>
+      </div>
     </div>
   </ng-container>
 </div>

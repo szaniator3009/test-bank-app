@@ -5,6 +5,7 @@ import { Observable, of, switchMap } from 'rxjs';
 import { TransferBoxFormService } from './services/TransferBoxFormService.service';
 import { DialogInitializer } from '@costlydeveloper/ngx-awesome-popup';
 import { ModalComponent } from '../../modal/modal.component';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-transfer-box-form',
@@ -13,6 +14,7 @@ import { ModalComponent } from '../../modal/modal.component';
 export class TransferBoxFormComponent implements OnInit {
   form: FormGroup;
   accountBalance$: Observable<number>;
+  private subSink: SubSink = new SubSink();
   constructor(
     private transferBoxFormService: TransferBoxFormService,
     private transactionsService: TransactionsService
@@ -24,7 +26,6 @@ export class TransferBoxFormComponent implements OnInit {
     this.transferBoxFormService._isConfirmed$
       .pipe(
         switchMap((value) => {
-          console.log(value);
           value === true && this.form.reset();
           return of(value);
         })
@@ -46,5 +47,9 @@ export class TransferBoxFormComponent implements OnInit {
   openPopup() {
     const modal = new DialogInitializer(ModalComponent);
     modal.openDialog$<any>().subscribe();
+  }
+
+  ngOnDestroy() {
+    this.subSink.unsubscribe();
   }
 }
