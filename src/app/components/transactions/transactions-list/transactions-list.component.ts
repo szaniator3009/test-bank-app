@@ -17,6 +17,7 @@ export class TransactionsListComponent implements OnInit {
   ngOnInit(): void {
     this.accountEvents$ = this.transactionsService.getAccountsEvents$();
   }
+
   handleInputChange(e: any): void {
     e !== ''
       ? (this.accountEvents$ = this.transactionsService

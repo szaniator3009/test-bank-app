@@ -1,6 +1,14 @@
 <ng-container *ngIf="item">
   <main class="flex justify-between w-full font-bold pb-3">
     <section class="flex space-x-10">
+      <div
+        class="w-1"
+        [ngClass]="
+          item.transaction.creditDebitIndicator === 'DBIT'
+            ? 'bg-red-600'
+            : 'bg-green-600'
+        "
+      ></div>
       <div class="flex text-sm h-full items-center">
         {{ item?.dates?.valueDate | date: "MMM. d" }}
       </div>

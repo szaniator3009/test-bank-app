@@ -19,6 +19,7 @@ import {
   ToastNotificationConfigModule,
 } from '@costlydeveloper/ngx-awesome-popup';
 import { ModalComponent } from './components/modal/modal.component';
+import { ModalButtonComponent } from './components/modal/modal-button/modal-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { ModalComponent } from './components/modal/modal.component';
     TransactionsListComponent,
     ListItemComponent,
     ModalComponent,
+    ModalButtonComponent,
   ],
   imports: [
     BrowserModule,

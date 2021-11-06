@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BoxHeaderComponent } from 'src/app/shared/components/box-header/box-header.component';
+import { ListItemComponent } from './list-item/list-item.component';
 
 import { TransactionsListComponent } from './transactions-list.component';
 
@@ -8,9 +10,12 @@ describe('TransactionsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransactionsListComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        TransactionsListComponent,
+        ListItemComponent,
+        BoxHeaderComponent,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

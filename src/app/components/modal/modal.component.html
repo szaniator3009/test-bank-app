@@ -5,7 +5,6 @@
       <button (click)="closeModal()">X</button>
     </section>
     <hr class="border-t-1 border-solid" />
-
     <p class="text-sm font-bold pt-3 italic">
       Are you ready to sent out this transfer?
     </p>
@@ -16,40 +15,16 @@
     <p class="text-sm font-extrabold pt-3">With the amount of</p>
     <p class="text-sm pt-1">{{ accountEvent.amount }}</p>
     <div class="flex justify-end space-x-2 pt-4">
-      <button
-        (click)="closeModal()"
-        class="
-          m-2
-          pl-1
-          pr-2
-          text-black
-          h-8
-          rounded-sm
-          mt-10
-          text-center
-          align-middle
-          border border-black
-        "
-      >
-        Close
-      </button>
-      <button
-        (click)="confirm()"
-        class="
-          m-2
-          pl-1
-          pr-2
-          bg-yellow-600
-          text-white
-          h-8
-          rounded-sm
-          mt-10
-          text-center
-          align-middle
-        "
-      >
-        Send transfer
-      </button>
+      <app-modal-button
+        [class]="'border border-black text-black'"
+        [text]="'Close'"
+        (handleClick)="confirm()"
+      ></app-modal-button>
+      <app-modal-button
+        [class]="'bg-yellow-600  text-white'"
+        [text]="'Send transfer'"
+        (handleClick)="confirm()"
+      ></app-modal-button>
     </div>
   </main>
 </ng-container>

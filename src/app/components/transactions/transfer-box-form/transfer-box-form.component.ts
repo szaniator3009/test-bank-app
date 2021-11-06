@@ -2,10 +2,10 @@ import { TransactionsService } from './../services/transactions.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable, of, switchMap } from 'rxjs';
-import { TransferBoxFormService } from './services/TransferBoxFormService.service';
 import { DialogInitializer } from '@costlydeveloper/ngx-awesome-popup';
 import { ModalComponent } from '../../modal/modal.component';
 import { SubSink } from 'subsink';
+import { TransferBoxFormService } from './services/transferBoxFormService.service';
 
 @Component({
   selector: 'app-transfer-box-form',

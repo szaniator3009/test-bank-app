@@ -1,12 +1,12 @@
-import {
-  TransferBoxFormService,
-  AccountEventTransaction,
-} from './../transactions/transfer-box-form/services/TransferBoxFormService.service';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DialogBelonging } from '@costlydeveloper/ngx-awesome-popup';
 import { Observable, tap } from 'rxjs';
 import { TransactionsService } from '../transactions/services/transactions.service';
 import { SubSink } from 'subsink';
+import {
+  AccountEventTransaction,
+  TransferBoxFormService,
+} from '../transactions/transfer-box-form/services/transferBoxFormService.service';
 
 @Component({
   selector: 'app-modal',
