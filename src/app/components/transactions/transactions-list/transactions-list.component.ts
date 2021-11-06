@@ -15,20 +15,22 @@ export class TransactionsListComponent implements OnInit {
   constructor(private transactionsService: TransactionsService) {}
 
   ngOnInit(): void {
-    this.accountEvents$ = this.transactionsService._accountsEvents$;
+    this.accountEvents$ = this.transactionsService.getAccountsEvents$();
   }
   handleInputChange(e: any): void {
     e !== ''
-      ? (this.accountEvents$ = this.transactionsService._accountsEvents$.pipe(
-          switchMap((events) => {
-            return of({
-              data: this.transactionsService.getTransactionByMerchantName(
-                events.data,
-                e
-              ),
-            });
-          })
-        ))
-      : (this.accountEvents$ = this.transactionsService._accountsEvents$);
+      ? (this.accountEvents$ = this.transactionsService
+          .getAccountsEvents$()
+          .pipe(
+            switchMap((events) => {
+              return of({
+                data: this.transactionsService.getTransactionByMerchantName(
+                  events.data,
+                  e
+                ),
+              });
+            })
+          ))
+      : (this.accountEvents$ = this.transactionsService.getAccountsEvents$());
   }
 }

@@ -12,6 +12,6 @@ export class TransactionsBoardComponent implements OnInit {
   constructor(private transactionsService: TransactionsService) {}
 
   ngOnInit(): void {
-    this.accountsEvents$ = this.transactionsService._accountsEvents$;
+    this.accountsEvents$ = this.transactionsService.getAccountsEvents$();
   }
 }

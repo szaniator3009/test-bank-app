@@ -1,5 +1,5 @@
 export interface AccountEvents {
-  data: AccountEvent[];
+  data?: AccountEvent[];
 }
 
 export interface AccountEvent {
