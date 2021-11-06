@@ -1,137 +1,129 @@
 <ng-container *ngIf="accountBalance$ | async as balance">
   <main class="h-full">
     <form [formGroup]="form">
-      <div>
-        <div class="flex flex-col justify-around text-black p-3">
-          <section class="flex flex-col pb-4">
-            <span class="font-semibold">From account</span>
-            <input
-              class="w-full rounded-sm font-semibold text-xs p-2"
-              placeholder="My personal account : €{{ balance }}"
-              type="text"
-              disabled="true"
-            />
-          </section>
-          <section class="flex flex-col pb-4">
-            <span class="font-semibold">To account</span>
-            <input
-              class="w-full border-2 rounded-sm italic text-xs p-1 font-bold"
-              placeholder="type an account name"
-              type="text"
-              formControlName="toAccount"
-              [ngClass]="
-                form.controls['toAccount'].invalid &&
-                (form.controls['toAccount'].dirty ||
-                  form.controls['toAccount'].touched)
-                  ? 'border-red-600'
-                  : ''
-              "
-            />
+      <div class="flex flex-col justify-around text-black p-3">
+        <section class="flex flex-col pb-4">
+          <span class="font-semibold">From account</span>
+          <input
+            class="w-full rounded-sm font-semibold text-xs p-2"
+            placeholder="My personal account : €{{ balance }}"
+            type="text"
+            disabled="true"
+          />
+        </section>
+        <section class="flex flex-col pb-4">
+          <span class="font-semibold">To account</span>
+          <input
+            class="w-full border-2 rounded-sm italic text-xs p-1 font-bold"
+            placeholder="type an account name"
+            type="text"
+            formControlName="toAccount"
+            [ngClass]="
+              form.controls['toAccount'].invalid &&
+              (form.controls['toAccount'].dirty ||
+                form.controls['toAccount'].touched)
+                ? 'border-red-600'
+                : ''
+            "
+          />
+          <div
+            *ngIf="
+              form.controls['toAccount'].invalid &&
+              (form.controls['toAccount'].dirty ||
+                form.controls['toAccount'].touched)
+            "
+            class="alert"
+          >
             <div
-              *ngIf="
-                form.controls['toAccount'].invalid &&
-                (form.controls['toAccount'].dirty ||
-                  form.controls['toAccount'].touched)
-              "
-              class="alert"
-            >
-              <div
-                class="text-xs text-red-600 font-bold"
-                *ngIf="form.controls['toAccount'].errors.required"
-              >
-                This field is required
-              </div>
-            </div>
-          </section>
-          <section class="flex flex-col pb-4">
-            <span class="font-semibold">Amount</span>
-            <input
-              class="w-full border-2 rounded-sm italic text-xs p-1 font-bold"
-              placeholder="specify the amount"
-              type="number"
-              formControlName="amount"
-              [ngClass]="
-                form.controls['amount'].invalid &&
-                (form.controls['amount'].dirty ||
-                  form.controls['amount'].touched)
-                  ? 'border-red-600'
-                  : ''
-              "
-            />
-
-            <p
-              *ngIf="form.get('amount').value > balance"
               class="text-xs text-red-600 font-bold"
+              *ngIf="form.controls['toAccount'].errors.required"
             >
-              There is not enough balance
-            </p>
-            <div
-              *ngIf="
-                form.controls['amount'].invalid &&
-                (form.controls['amount'].dirty ||
-                  form.controls['amount'].touched)
-              "
-              class="alert"
-            >
-              <div
-                class="text-xs text-red-600 font-bold"
-                *ngIf="form.controls['amount'].errors.max"
-              >
-                You can send max 500
-              </div>
+              This field is required
             </div>
+          </div>
+        </section>
+        <section class="flex flex-col pb-4">
+          <span class="font-semibold">Amount</span>
+          <input
+            class="w-full border-2 rounded-sm italic text-xs p-1 font-bold"
+            placeholder="specify the amount"
+            type="number"
+            formControlName="amount"
+            [ngClass]="
+              form.controls['amount'].invalid &&
+              (form.controls['amount'].dirty || form.controls['amount'].touched)
+                ? 'border-red-600'
+                : ''
+            "
+          />
+
+          <p
+            *ngIf="form.get('amount').value > balance"
+            class="text-xs text-red-600 font-bold"
+          >
+            There is not enough balance
+          </p>
+          <div
+            *ngIf="
+              form.controls['amount'].invalid &&
+              (form.controls['amount'].dirty || form.controls['amount'].touched)
+            "
+            class="alert"
+          >
             <div
-              *ngIf="
-                form.controls['amount'].invalid &&
-                (form.controls['amount'].dirty ||
-                  form.controls['amount'].touched)
-              "
-              class="alert"
+              class="text-xs text-red-600 font-bold"
+              *ngIf="form.controls['amount'].errors.max"
             >
-              <div
-                class="text-xs text-red-600 font-bold"
-                *ngIf="form.controls['amount'].errors.min"
-              >
-                Amount should be above 0
-              </div>
+              You can send max 500
             </div>
+          </div>
+          <div
+            *ngIf="
+              form.controls['amount'].invalid &&
+              (form.controls['amount'].dirty || form.controls['amount'].touched)
+            "
+            class="alert"
+          >
             <div
-              *ngIf="
-                form.controls['amount'].invalid &&
-                (form.controls['amount'].dirty ||
-                  form.controls['amount'].touched)
-              "
-              class="alert"
+              class="text-xs text-red-600 font-bold"
+              *ngIf="form.controls['amount'].errors.min"
             >
-              <div
-                class="text-xs text-red-600 font-bold"
-                *ngIf="form.controls['amount'].errors.required"
-              >
-                This field is required
-              </div>
+              Amount should be above 0
             </div>
-          </section>
-          <section class="flex justify-end">
+          </div>
+          <div
+            *ngIf="
+              form.controls['amount'].invalid &&
+              (form.controls['amount'].dirty || form.controls['amount'].touched)
+            "
+            class="alert"
+          >
             <div
-              class="
-                pt-1
-                pb-1
-                bg-yellow-600
-                w-1/4
-                text-white
-                h-8
-                rounded-sm
-                mt-10
-                text-center
-                align-middle
-              "
+              class="text-xs text-red-600 font-bold"
+              *ngIf="form.controls['amount'].errors.required"
             >
-              <app-submit-button
-                (submitForm)="submitForm()"
-              ></app-submit-button>
+              This field is required
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
+        <section class="flex justify-end">
+          <div
+            class="
+              pt-1
+              pb-1
+              bg-yellow-600
+              w-1/4
+              text-white
+              h-8
+              rounded-sm
+              mt-10
+              text-center
+              align-middle
+            "
+          >
+            <app-submit-button (submitForm)="submitForm()"></app-submit-button>
+          </div>
+        </section>
       </div>
     </form>
   </main>

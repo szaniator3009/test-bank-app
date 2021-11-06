@@ -3,14 +3,14 @@
     [title]="'Transactions list'"
     [image]="'list.svg'"
   ></app-box-header>
-  <div class="flex border m-3 overscroll-y-auto">
+  <section class="flex border m-3 overscroll-y-auto">
     <app-filter (inputChange)="handleInputChange($event)"></app-filter>
-  </div>
+  </section>
   <ng-container *ngIf="accountEvents$ | async as accountsEvents">
-    <div class="fixedHeightContainer">
-      <div class="m-3 content" *ngFor="let item of accountsEvents.data">
+    <section class="fixedHeightContainer">
+      <div class="m-4 content" *ngFor="let item of accountsEvents.data">
         <app-list-item [item]="item"></app-list-item>
       </div>
-    </div>
+    </section>
   </ng-container>
 </div>

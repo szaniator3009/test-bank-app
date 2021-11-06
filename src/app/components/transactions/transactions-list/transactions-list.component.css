@@ -6,4 +6,5 @@
 .content {
   overflow: auto;
   background: #fff;
+  display: inherit;
 }

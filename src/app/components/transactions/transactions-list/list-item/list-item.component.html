@@ -1,38 +1,54 @@
 <ng-container *ngIf="item">
-  <main class="flex justify-between w-full font-bold pb-3">
-    <section class="flex space-x-10">
-      <div
-        class="w-1"
-        [ngClass]="
-          item.transaction.creditDebitIndicator === 'DBIT'
-            ? 'bg-red-600'
-            : 'bg-green-600'
-        "
-      ></div>
-      <div class="flex text-sm h-full items-center">
-        {{ item?.dates?.valueDate | date: "MMM. d" }}
-      </div>
-      <div class="flex flex-col h-full">
-        <p class="items-center">{{ item.merchant.name }}</p>
-        <p class="text-xs items-center text-gray-400">
-          {{ item.transaction.type }}
-        </p>
-      </div>
+  <app-transaction-item>
+    <section
+      data-test-hook="transactionColour"
+      class="flex w-1 h-16 float-left"
+      [ngClass]="
+        item.transaction.creditDebitIndicator === 'DBIT'
+          ? 'bg-red-600'
+          : 'bg-green-600'
+      "
+    ></section>
+    <section
+      data-test-hook="transactionDate"
+      class="
+        pl-3
+        float-left
+        m-auto
+        align-middle
+        font-extrabold
+        h-16
+        p-5
+        text-sm
+      "
+    >
+      <span>{{ item?.dates?.valueDate | date: "MMM. d" }}</span>
     </section>
-    <section class="flex">
+    <section
+      data-test-hook="transactionMerchantName"
+      class="pl-3 h-16 p-2 font-bold"
+    >
+      {{ item.merchant.name }}
       <div
-        class="flex text-sm h-full items-center"
-        [ngClass]="
-          item.transaction.creditDebitIndicator === 'DBIT'
-            ? 'text-red-600'
-            : 'text-green-600'
-        "
+        data-test-hook="transactionType"
+        class="text-sm font-bold text-gray-500"
       >
-        €
-        <span *ngIf="item.transaction.creditDebitIndicator === 'DBIT'"> -</span>
-        {{ item?.transaction?.amountCurrency?.amount }}
+        <span> {{ item.transaction.type }} </span>
       </div>
     </section>
-  </main>
-  <hr class="border-t-1 border-solid" />
+    <section
+      data-test-hook="transactionAmount"
+      class="flex justify-end font-extrabold text-sm"
+      [ngClass]="
+        item.transaction.creditDebitIndicator === 'DBIT'
+          ? 'text-red-600'
+          : 'text-green-600'
+      "
+    >
+      €
+      <span *ngIf="item.transaction.creditDebitIndicator === 'DBIT'"> -</span>
+      {{ item?.transaction?.amountCurrency?.amount }}
+    </section>
+  </app-transaction-item>
+  <div><hr class="border-t-1 border-solid" /></div>
 </ng-container>
