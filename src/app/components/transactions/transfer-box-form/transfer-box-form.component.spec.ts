@@ -43,8 +43,6 @@ describe('TransferBoxFormComponent', () => {
   describe('onInit', () => {
     it('should call transferBoxFormService on init', () => {
       let spyOnGetForm = spyOn(transferBoxFormService, 'getForm');
-      fixture = TestBed.createComponent(TransferBoxFormComponent);
-      component = fixture.componentInstance;
       component.ngOnInit();
       expect(spyOnGetForm).toHaveBeenCalled();
     });
@@ -54,8 +52,6 @@ describe('TransferBoxFormComponent', () => {
         transactionsService,
         'getAccountBalance$'
       );
-      fixture = TestBed.createComponent(TransferBoxFormComponent);
-      component = fixture.componentInstance;
       component.ngOnInit();
       expect(spyOnGetAccountBalance).toHaveBeenCalled();
     });
@@ -65,8 +61,6 @@ describe('TransferBoxFormComponent', () => {
         transferBoxFormService,
         'getIsConfirmed$'
       ).and.returnValue(of(false));
-      fixture = TestBed.createComponent(TransferBoxFormComponent);
-      component = fixture.componentInstance;
       component.ngOnInit();
       expect(spyOnGetIsConfirmed).toHaveBeenCalled();
     });
@@ -76,8 +70,7 @@ describe('TransferBoxFormComponent', () => {
         transferBoxFormService,
         'getIsConfirmed$'
       ).and.returnValue(of(true));
-      fixture = TestBed.createComponent(TransferBoxFormComponent);
-      component = fixture.componentInstance;
+
       let builder = new FormBuilder();
       let form = builder.group({
         toAccount: ['test account', Validators.required],
@@ -97,8 +90,6 @@ describe('TransferBoxFormComponent', () => {
         transferBoxFormService,
         'getIsConfirmed$'
       ).and.returnValue(of(false));
-      fixture = TestBed.createComponent(TransferBoxFormComponent);
-      component = fixture.componentInstance;
       let builder = new FormBuilder();
       let mockAmount: string = 'test amount';
       let form = builder.group({
@@ -112,6 +103,23 @@ describe('TransferBoxFormComponent', () => {
       component.ngOnInit();
       expect(spyOnGetIsConfirmed).toHaveBeenCalled();
       expect(component.form.get('amount').value).toEqual(mockAmount);
+    });
+
+    describe('submit', () => {
+      it('should validate empty form', () => {
+        let builder = new FormBuilder();
+        let form = builder.group({
+          toAccount: [null, Validators.required],
+          amount: [
+            null,
+            [Validators.required, Validators.min(1), Validators.max(500)],
+          ],
+        });
+        spyOn(transferBoxFormService, 'getForm').and.returnValue(form);
+        component.ngOnInit();
+        component.submitForm();
+        expect(component.form.valid).toBeFalsy();
+      });
     });
   });
 });

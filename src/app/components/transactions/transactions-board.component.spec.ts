@@ -40,8 +40,6 @@ describe('TransactionsComponent', () => {
       transactionsService,
       'getAccountsEvents$'
     );
-    fixture = TestBed.createComponent(TransactionsBoardComponent);
-    component = fixture.componentInstance;
     component.ngOnInit();
     expect(spyOnGetAccountsEvent).toHaveBeenCalled();
   });

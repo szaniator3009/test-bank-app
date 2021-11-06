@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AccountEvent } from 'src/app/models/account';
 
 export interface AccountEventTransaction {
@@ -11,7 +11,7 @@ export interface AccountEventTransaction {
 export class TransferBoxFormService {
   constructor(private fb: FormBuilder) {}
 
-  private accountEvent$: BehaviorSubject<AccountEventTransaction> =
+  accountEvent$: BehaviorSubject<AccountEventTransaction> =
     new BehaviorSubject<AccountEventTransaction>(null);
   _accountEvent$: Observable<AccountEventTransaction> =
     this.accountEvent$.asObservable();
@@ -24,10 +24,12 @@ export class TransferBoxFormService {
     this.accountEvent$.next(value);
   }
 
-  setIsConfirmed(value: boolean): void {}
+  setIsConfirmed(value: boolean): void {
+    this.isConfirmed$.next(value);
+  }
 
   getIsConfirmed$(): Observable<boolean> {
-    return of(null);
+    return this.isConfirmed$.asObservable();
   }
 
   resetFormValues(): void {

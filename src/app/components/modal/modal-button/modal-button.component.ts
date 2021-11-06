@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-button',
   templateUrl: './modal-button.component.html',
-  styleUrls: ['./modal-button.component.css'],
 })
 export class ModalButtonComponent {
   @Input() bgColor: string;
