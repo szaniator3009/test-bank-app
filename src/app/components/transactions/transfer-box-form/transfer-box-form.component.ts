@@ -20,7 +20,7 @@ export class TransferBoxFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.transferBoxFormService.getForm();
     this.accountBalance$ = this.transactionsService.getAccountBalance$();
-    this.transferBoxFormService
+    this.subSink.sink = this.transferBoxFormService
       .getIsConfirmed$()
       .pipe(
         switchMap((value) => {
@@ -42,9 +42,9 @@ export class TransferBoxFormComponent implements OnInit {
     }
   }
 
-  openPopup() {
+  private openPopup() {
     const modal = new DialogInitializer(ModalComponent);
-    modal.openDialog$<any>().subscribe();
+    this.subSink.sink = modal.openDialog$<any>().subscribe();
   }
 
   ngOnDestroy() {
