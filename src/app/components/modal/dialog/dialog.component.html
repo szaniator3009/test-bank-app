@@ -1,0 +1,12 @@
+<section class="flex justify-between pb-3 pt-3">
+  <h2 class="text-xl"><strong>Review</strong> transfer</h2>
+  <button aria-label="'Close modal'" (click)="handleClick()">X</button>
+</section>
+<hr class="border-t-1 border-solid" />
+<p class="text-sm font-bold pt-3 italic">Are you ready to sent out this transfer?</p>
+<p class="text-sm font-extrabold pt-3">It will be sent to account:</p>
+<p class="text-sm pt-1">
+  {{ accountEvent?.account }}
+</p>
+<p class="text-sm font-extrabold pt-3">With the amount of</p>
+<p class="text-sm pt-1">{{ accountEvent?.amount }}</p>

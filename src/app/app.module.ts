@@ -20,6 +20,7 @@ import {
 } from '@costlydeveloper/ngx-awesome-popup';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalButtonComponent } from './components/modal/modal-button/modal-button.component';
+import { DialogComponent } from './components/modal/dialog/dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { ModalButtonComponent } from './components/modal/modal-button/modal-butt
     ListItemComponent,
     ModalComponent,
     ModalButtonComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
