@@ -1,8 +1,5 @@
 <div class="w-auto bg-white rounded-lg">
-  <app-box-header
-    [title]="'Transactions list'"
-    [image]="'list.svg'"
-  ></app-box-header>
+  <app-box-header [title]="'Transactions list'" [image]="'list.svg'"></app-box-header>
   <section class="flex border m-3 overscroll-y-auto">
     <app-filter (inputChange)="handleInputChange($event)"></app-filter>
   </section>

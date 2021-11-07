@@ -16,10 +16,7 @@ describe('Transactions service', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        TransactionsService,
-        { provide: AccountHttpClient, useValue: ACCOUNT_HTTP_CLIENT_MOCK },
-      ],
+      providers: [TransactionsService, { provide: AccountHttpClient, useValue: ACCOUNT_HTTP_CLIENT_MOCK }],
     });
     service = TestBed.inject(TransactionsService);
     accountHttpClient = TestBed.inject(AccountHttpClient);
@@ -65,9 +62,7 @@ describe('Transactions service', () => {
         ],
       };
 
-      spyOn(accountHttpClient, 'getAccountEvents$').and.returnValue(
-        of(mockAccountEvents)
-      );
+      spyOn(accountHttpClient, 'getAccountEvents$').and.returnValue(of(mockAccountEvents));
       service.getAccountsEvents$().subscribe((val) => {
         expect(mockAccountEvents).toEqual(val);
         done();
@@ -91,8 +86,7 @@ describe('Transactions service', () => {
           merchant: { name: 'Classer' },
         },
       ];
-      const filteredTransactions: AccountEvent[] =
-        service.getTransactionByMerchantName(mockTransactions, 'A');
+      const filteredTransactions: AccountEvent[] = service.getTransactionByMerchantName(mockTransactions, 'A');
       expect(filteredTransactions.length).toEqual(2);
     });
   });

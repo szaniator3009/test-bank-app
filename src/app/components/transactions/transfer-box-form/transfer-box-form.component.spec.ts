@@ -48,36 +48,24 @@ describe('TransferBoxFormComponent', () => {
     });
 
     it('should call transactionsService with getAccountBalance  on init', () => {
-      let spyOnGetAccountBalance = spyOn(
-        transactionsService,
-        'getAccountBalance$'
-      );
+      let spyOnGetAccountBalance = spyOn(transactionsService, 'getAccountBalance$');
       component.ngOnInit();
       expect(spyOnGetAccountBalance).toHaveBeenCalled();
     });
 
     it('should call transferBoxFormService with getIsConfirmed on init', () => {
-      let spyOnGetIsConfirmed = spyOn(
-        transferBoxFormService,
-        'getIsConfirmed$'
-      ).and.returnValue(of(false));
+      let spyOnGetIsConfirmed = spyOn(transferBoxFormService, 'getIsConfirmed$').and.returnValue(of(false));
       component.ngOnInit();
       expect(spyOnGetIsConfirmed).toHaveBeenCalled();
     });
 
     it('should reset for when isConfirmed is true', () => {
-      let spyOnGetIsConfirmed = spyOn(
-        transferBoxFormService,
-        'getIsConfirmed$'
-      ).and.returnValue(of(true));
+      let spyOnGetIsConfirmed = spyOn(transferBoxFormService, 'getIsConfirmed$').and.returnValue(of(true));
 
       let builder = new FormBuilder();
       let form = builder.group({
         toAccount: ['test account', Validators.required],
-        amount: [
-          'test amount',
-          [Validators.required, Validators.min(1), Validators.max(500)],
-        ],
+        amount: ['test amount', [Validators.required, Validators.min(1), Validators.max(500)]],
       });
       spyOn(transferBoxFormService, 'getForm').and.returnValue(form);
       component.ngOnInit();
@@ -87,18 +75,12 @@ describe('TransferBoxFormComponent', () => {
     });
 
     it('should not reset for when isConfirmed is false', () => {
-      let spyOnGetIsConfirmed = spyOn(
-        transferBoxFormService,
-        'getIsConfirmed$'
-      ).and.returnValue(of(false));
+      let spyOnGetIsConfirmed = spyOn(transferBoxFormService, 'getIsConfirmed$').and.returnValue(of(false));
       let builder = new FormBuilder();
       let mockAmount: string = 'test amount';
       let form = builder.group({
         toAccount: ['test account', Validators.required],
-        amount: [
-          'test amount',
-          [Validators.required, Validators.min(1), Validators.max(500)],
-        ],
+        amount: ['test amount', [Validators.required, Validators.min(1), Validators.max(500)]],
       });
       spyOn(transferBoxFormService, 'getForm').and.returnValue(form);
       component.ngOnInit();
@@ -111,10 +93,7 @@ describe('TransferBoxFormComponent', () => {
         let builder = new FormBuilder();
         let form = builder.group({
           toAccount: [null, Validators.required],
-          amount: [
-            null,
-            [Validators.required, Validators.min(1), Validators.max(500)],
-          ],
+          amount: [null, [Validators.required, Validators.min(1), Validators.max(500)]],
         });
         spyOn(transferBoxFormService, 'getForm').and.returnValue(form);
         component.ngOnInit();

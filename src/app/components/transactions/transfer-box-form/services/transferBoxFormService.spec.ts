@@ -1,9 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {
-  AccountEventTransaction,
-  TransferBoxFormService,
-} from './transferBoxFormService.service';
+import { AccountEventTransaction, TransferBoxFormService } from './transferBoxFormService.service';
 
 describe('Transactions service', () => {
   let service: TransferBoxFormService;
@@ -69,8 +66,6 @@ describe('Transactions service', () => {
     let createdTransaction = service.createAccountEvent(event);
     expect(createdTransaction.merchant.name).toEqual('test');
     expect(createdTransaction.transaction.amountCurrency.amount).toEqual('500');
-    expect(createdTransaction.transaction.amountCurrency.currencyCode).toEqual(
-      'EUR'
-    );
+    expect(createdTransaction.transaction.amountCurrency.currencyCode).toEqual('EUR');
   });
 });

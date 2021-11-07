@@ -5,8 +5,7 @@ import { AccountEvent, AccountEvents } from 'src/app/models/account';
 
 @Injectable({ providedIn: 'root' })
 export class TransactionsService {
-  private accountBalance$: BehaviorSubject<number> =
-    new BehaviorSubject<number>(5824.76);
+  private accountBalance$: BehaviorSubject<number> = new BehaviorSubject<number>(5824.76);
 
   constructor(private accountHttpClient: AccountHttpClient) {}
 
@@ -31,8 +30,6 @@ export class TransactionsService {
   }
 
   getTransactionByMerchantName(transactions: AccountEvent[], name: string) {
-    return transactions.filter((transaction) =>
-      transaction?.merchant?.name.toLowerCase().startsWith(name.toLowerCase())
-    );
+    return transactions.filter((transaction) => transaction?.merchant?.name.toLowerCase().startsWith(name.toLowerCase()));
   }
 }

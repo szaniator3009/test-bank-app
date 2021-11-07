@@ -15,10 +15,7 @@ export class TransferBoxFormComponent implements OnInit {
   form: FormGroup;
   accountBalance$: Observable<number>;
   private subSink: SubSink = new SubSink();
-  constructor(
-    private transferBoxFormService: TransferBoxFormService,
-    private transactionsService: TransactionsService
-  ) {}
+  constructor(private transferBoxFormService: TransferBoxFormService, private transactionsService: TransactionsService) {}
 
   ngOnInit(): void {
     this.form = this.transferBoxFormService.getForm();

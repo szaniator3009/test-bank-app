@@ -16,8 +16,6 @@ export const TRANSACTIONS_SERVICE_MOCK: Partial<TransactionsService> = {
   postAccountEvent$(value: AccountEvent): void {},
 
   getTransactionByMerchantName(transactions: AccountEvent[], name: string) {
-    return transactions.filter((transaction) =>
-      transaction?.merchant?.name.toLowerCase().startsWith(name.toLowerCase())
-    );
+    return transactions.filter((transaction) => transaction?.merchant?.name.toLowerCase().startsWith(name.toLowerCase()));
   },
 };

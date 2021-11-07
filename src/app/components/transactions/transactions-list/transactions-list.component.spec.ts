@@ -12,14 +12,8 @@ describe('TransactionsListComponent', () => {
   let transactionsService: TransactionsService;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        TransactionsListComponent,
-        ListItemComponent,
-        BoxHeaderComponent,
-      ],
-      providers: [
-        { provide: TransactionsService, useValue: TRANSACTIONS_SERVICE_MOCK },
-      ],
+      declarations: [TransactionsListComponent, ListItemComponent, BoxHeaderComponent],
+      providers: [{ provide: TransactionsService, useValue: TRANSACTIONS_SERVICE_MOCK }],
     }).compileComponents();
   });
 
@@ -36,10 +30,7 @@ describe('TransactionsListComponent', () => {
 
   describe('onInit', () => {
     it('should call transactions service', () => {
-      let spyOnGetAccountsEvent = spyOn(
-        transactionsService,
-        'getAccountsEvents$'
-      );
+      let spyOnGetAccountsEvent = spyOn(transactionsService, 'getAccountsEvents$');
       component.ngOnInit();
       expect(spyOnGetAccountsEvent).toHaveBeenCalled();
     });

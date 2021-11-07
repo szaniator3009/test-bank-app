@@ -11,14 +11,10 @@ export interface AccountEventTransaction {
 export class TransferBoxFormService {
   constructor(private fb: FormBuilder) {}
 
-  accountEvent$: BehaviorSubject<AccountEventTransaction> =
-    new BehaviorSubject<AccountEventTransaction>(null);
-  _accountEvent$: Observable<AccountEventTransaction> =
-    this.accountEvent$.asObservable();
+  accountEvent$: BehaviorSubject<AccountEventTransaction> = new BehaviorSubject<AccountEventTransaction>(null);
+  _accountEvent$: Observable<AccountEventTransaction> = this.accountEvent$.asObservable();
 
-  private isConfirmed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  private isConfirmed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   setAccountEvent(value: AccountEventTransaction): void {
     this.accountEvent$.next(value);
@@ -39,10 +35,7 @@ export class TransferBoxFormService {
   getForm(): FormGroup {
     const formGroup: FormGroup = this.fb.group({
       toAccount: [null, Validators.required],
-      amount: [
-        null,
-        [Validators.required, Validators.min(1), Validators.max(500)],
-      ],
+      amount: [null, [Validators.required, Validators.min(1), Validators.max(500)]],
     });
     return formGroup;
   }

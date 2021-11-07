@@ -20,18 +20,13 @@ export class TransactionsListComponent implements OnInit {
 
   handleInputChange(e: any): void {
     e !== ''
-      ? (this.accountEvents$ = this.transactionsService
-          .getAccountsEvents$()
-          .pipe(
-            switchMap((events) => {
-              return of({
-                data: this.transactionsService.getTransactionByMerchantName(
-                  events.data,
-                  e
-                ),
-              });
-            })
-          ))
+      ? (this.accountEvents$ = this.transactionsService.getAccountsEvents$().pipe(
+          switchMap((events) => {
+            return of({
+              data: this.transactionsService.getTransactionByMerchantName(events.data, e),
+            });
+          })
+        ))
       : (this.accountEvents$ = this.transactionsService.getAccountsEvents$());
   }
 }

@@ -6,19 +6,13 @@ import { LogoComponent } from './components/logo/logo.component';
 import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 
-const COMPONENTS = [
-  FooterComponent,
-  LogoComponent,
-  SubmitButtonComponent,
-  FilterComponent,
-  TransactionItemComponent,
-];
+const COMPONENTS = [FooterComponent, LogoComponent, SubmitButtonComponent, FilterComponent, TransactionItemComponent];
 @NgModule({
   declarations: COMPONENTS,
   imports: [],
   exports: COMPONENTS,
   providers: [],
   bootstrap: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class BbUIModule { }
+export class BbUIModule {}
